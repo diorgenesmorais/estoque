@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "caixa_contigencia")
-public class CaixaContigencia {
+@Table(name = "caixa_contingencia")
+public class CaixaContingencia {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,7 +91,7 @@ public class CaixaContigencia {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CaixaContigencia other = (CaixaContigencia) obj;
+		CaixaContingencia other = (CaixaContingencia) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

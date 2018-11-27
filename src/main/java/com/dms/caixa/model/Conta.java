@@ -18,5 +18,5 @@ public class Conta {
 	private Integer id;
 
 	@OneToMany(mappedBy = "conta")
-	private List<CaixaContigencia> caixas;
+	private List<CaixaContingencia> caixas;
 }

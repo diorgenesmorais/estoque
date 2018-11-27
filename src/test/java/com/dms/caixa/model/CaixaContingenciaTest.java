@@ -9,18 +9,18 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dms.caixa.AbstractTest;
-import com.dms.caixa.repository.CaixaContigenciaRepository;
+import com.dms.caixa.repository.CaixaContingenciaRepository;
 
-public class CaixaContigenciaTest extends AbstractTest {
+public class CaixaContingenciaTest extends AbstractTest {
 
 	@Autowired
-	private CaixaContigenciaRepository repository;
+	private CaixaContingenciaRepository repository;
 
 	@Test
 	public void deveObterOTrocoCerto() throws Exception {
 		BigDecimal expected = new BigDecimal(16.25).setScale(2, RoundingMode.DOWN);
 
-		Optional<CaixaContigencia> caixa = repository.findById(1);
+		Optional<CaixaContingencia> caixa = repository.findById(1);
 		BigDecimal troco = caixa.get().getPago().subtract(caixa.get().getValor());
 
 		Assert.assertEquals(expected, troco);
