@@ -18,7 +18,7 @@ public class CaixaContingencia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name="usuario_id")
+	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	private Integer pedido;
 	private BigDecimal valor;
