@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "contas")
 public class Conta {
@@ -37,6 +39,7 @@ public class Conta {
 	@Column(name = "taxa_acima")
 	private BigDecimal taxaAcima;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "conta")
 	private List<CaixaContingencia> caixas;
 
