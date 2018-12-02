@@ -1,9 +1,12 @@
 package com.dms.caixa.resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +23,11 @@ public class CaixaContingenciaResource {
 	@GetMapping
 	public List<CaixaContingencia> listar() {
 		return repository.findAll();
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<CaixaContingencia> buscarPorId(@PathVariable Integer id) {
+		Optional<CaixaContingencia> caixa = repository.findById(id);
+		return caixa.isPresent() ? ResponseEntity.ok(caixa.get()) : ResponseEntity.notFound().build();
 	}
 }
