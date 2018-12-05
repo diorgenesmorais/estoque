@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dms.caixa.model.Conta;
 import com.dms.caixa.repository.ContaRepository;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/contas")
 public class ContaResource {
@@ -17,6 +19,7 @@ public class ContaResource {
 	@Autowired
 	private ContaRepository repository;
 
+	@ApiOperation(value = "Listar contas")
 	@GetMapping
 	public List<Conta> listar() {
 		return repository.findAll();
