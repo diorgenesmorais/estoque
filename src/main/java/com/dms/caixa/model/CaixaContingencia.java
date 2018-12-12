@@ -2,12 +2,11 @@ package com.dms.caixa.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,15 +16,12 @@ public class CaixaContingencia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	@Column(name = "usuario_id")
+	private Integer usuario;
 	private Integer pedido;
 	private BigDecimal valor;
-	@ManyToOne
-	@JoinColumn(name = "conta_id")
-	private Conta conta;
+	@Column(name = "conta_id")
+	private Integer conta;
 	private BigDecimal pago;
 
 	public Integer getId() {
@@ -36,11 +32,11 @@ public class CaixaContingencia {
 		this.id = id;
 	}
 
-	public Usuario getUsuario() {
+	public Integer getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Integer usuario) {
 		this.usuario = usuario;
 	}
 
@@ -60,11 +56,11 @@ public class CaixaContingencia {
 		this.valor = valor;
 	}
 
-	public Conta getConta() {
+	public Integer getConta() {
 		return conta;
 	}
 
-	public void setConta(Conta conta) {
+	public void setConta(Integer conta) {
 		this.conta = conta;
 	}
 
