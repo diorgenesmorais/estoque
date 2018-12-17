@@ -27,4 +27,8 @@ public class CaixaContingenciaService {
 		}
 		return caixa.get();
 	}
+
+	public CaixaContingencia salvar(CaixaContingencia caixa) {
+		return repository.save(caixa);
+	}
 }
