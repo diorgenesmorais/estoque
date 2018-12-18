@@ -41,7 +41,7 @@ public class Conta {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "conta")
-	private List<CaixaContingencia> caixas;
+	private List<CaixaDetalhe> contas;
 
 	public Integer getId() {
 		return id;
@@ -107,12 +107,12 @@ public class Conta {
 		this.taxaAcima = taxaAcima;
 	}
 
-	public List<CaixaContingencia> getCaixas() {
-		return caixas;
+	public List<CaixaDetalhe> getContas() {
+		return contas;
 	}
 
-	public void setCaixas(List<CaixaContingencia> caixas) {
-		this.caixas = caixas;
+	public void setContas(List<CaixaDetalhe> contas) {
+		this.contas = contas;
 	}
 
 	@Override

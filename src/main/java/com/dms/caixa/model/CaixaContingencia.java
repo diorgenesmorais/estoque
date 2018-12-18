@@ -1,13 +1,19 @@
 package com.dms.caixa.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "caixa_contingencia")
@@ -19,10 +25,11 @@ public class CaixaContingencia {
 	@Column(name = "usuario_id")
 	private Integer usuario;
 	private Integer pedido;
-	private BigDecimal valor;
-	@Column(name = "conta_id")
-	private Integer conta;
-	private BigDecimal pago;
+	private BigDecimal valor = BigDecimal.ZERO;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "caixa", fetch = FetchType.EAGER)
+	private List<CaixaDetalhe> caixas = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
@@ -56,20 +63,20 @@ public class CaixaContingencia {
 		this.valor = valor;
 	}
 
-	public Integer getConta() {
-		return conta;
+	public List<CaixaDetalhe> getCaixas() {
+		return caixas;
 	}
 
-	public void setConta(Integer conta) {
-		this.conta = conta;
+	public void setCaixas(List<CaixaDetalhe> caixas) {
+		this.caixas = caixas;
 	}
 
-	public BigDecimal getPago() {
-		return pago;
+	public BigDecimal getTotalPago() {
+		return caixas.stream().map(CaixaDetalhe::getPago).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
 	}
 
-	public void setPago(BigDecimal pago) {
-		this.pago = pago;
+	public BigDecimal getTroco() {
+		return getTotalPago().subtract(getValor());
 	}
 
 	@Override
