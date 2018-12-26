@@ -18,15 +18,15 @@ public class CaixaDetalheResource {
 
 	@Autowired
 	private CaixaDetalheService service;
-	
+
 	@GetMapping
-	public List<CaixaDetalhe> listar(){
+	public List<CaixaDetalhe> listar() {
 		return service.listar();
 	}
-	
+
 	@GetMapping("/{caixaId}")
-	public ResponseEntity<CaixaDetalhe> buscarPorCaixa(@PathVariable Integer caixaId){
-		
-		return null;
+	public ResponseEntity<List<CaixaDetalhe>> buscarPorCaixa(@PathVariable Integer caixaId) {
+		List<CaixaDetalhe> detalhes = service.buscarPorId(caixaId);
+		return ResponseEntity.ok(detalhes);
 	}
 }
