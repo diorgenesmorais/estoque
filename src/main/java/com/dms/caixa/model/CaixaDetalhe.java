@@ -3,12 +3,11 @@ package com.dms.caixa.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,12 +18,10 @@ public class CaixaDetalhe implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne
-	@JoinColumn(name = "caixa_id")
-	private CaixaContingencia caixa;
-	@ManyToOne
-	@JoinColumn(name = "conta_id")
-	private Conta conta;
+	@Column(name = "caixa_id")
+	private Integer caixa;
+	@Column(name = "conta_id")
+	private Integer conta;
 	private BigDecimal pago = BigDecimal.ZERO;
 
 	public Integer getId() {
@@ -35,19 +32,19 @@ public class CaixaDetalhe implements Serializable {
 		this.id = id;
 	}
 
-	public CaixaContingencia getCaixa() {
+	public Integer getCaixa() {
 		return caixa;
 	}
 
-	public void setCaixa(CaixaContingencia caixa) {
+	public void setCaixa(Integer caixa) {
 		this.caixa = caixa;
 	}
 
-	public Conta getConta() {
+	public Integer getConta() {
 		return conta;
 	}
 
-	public void setConta(Conta conta) {
+	public void setConta(Integer conta) {
 		this.conta = conta;
 	}
 
