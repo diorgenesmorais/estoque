@@ -20,8 +20,8 @@ public class CaixaDetalheResource {
 	private CaixaDetalheService service;
 
 	@GetMapping
-	public List<CaixaDetalhe> listar() {
-		return service.listar();
+	public ResponseEntity<List<CaixaDetalhe>> listar() {
+		return ResponseEntity.ok(service.listar());
 	}
 
 	@GetMapping("/{caixaId}")
