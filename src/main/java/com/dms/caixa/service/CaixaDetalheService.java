@@ -21,4 +21,8 @@ public class CaixaDetalheService {
 	public List<CaixaDetalhe> listar() {
 		return repository.findAll();
 	}
+
+	public List<CaixaDetalhe> salvar(List<CaixaDetalhe> caixaDetalhes) {
+		return repository.saveAll(caixaDetalhes);
+	}
 }
