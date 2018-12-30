@@ -3,6 +3,7 @@ package com.dms.caixa.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.dms.caixa.model.CaixaDetalhe;
@@ -15,7 +16,11 @@ public class CaixaDetalheService {
 	private CaixaDetalheRepository repository;
 
 	public List<CaixaDetalhe> buscarPorId(Integer id) {
-		return repository.findByCaixa(id);
+		List<CaixaDetalhe> detalhes = repository.findByCaixa(id);
+		if(detalhes.isEmpty()) {
+			throw new EmptyResultDataAccessException(1);
+		}
+		return detalhes;
 	}
 
 	public List<CaixaDetalhe> listar() {
