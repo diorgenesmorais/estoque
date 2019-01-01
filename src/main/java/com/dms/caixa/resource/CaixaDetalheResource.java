@@ -3,6 +3,7 @@ package com.dms.caixa.resource;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -44,7 +45,7 @@ public class CaixaDetalheResource {
 
 	@ApiOperation(value = "Adicionar uma lista de formas de pagtos")
 	@PostMapping
-	public ResponseEntity<List<CaixaDetalhe>> adicionar(@RequestBody List<CaixaDetalhe> caixaDetalhes,
+	public ResponseEntity<List<CaixaDetalhe>> adicionar(@Valid @RequestBody List<CaixaDetalhe> caixaDetalhes,
 			HttpServletResponse response) {
 		List<CaixaDetalhe> adicionados = service.salvar(caixaDetalhes);
 		Integer caixaId = adicionados.get(0).getCaixa();
