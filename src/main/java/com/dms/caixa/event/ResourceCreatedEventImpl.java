@@ -2,13 +2,13 @@ package com.dms.caixa.event;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.dms.event.ResourceCreatedEvent;
+import com.dms.useful.event.ResourceCreatedEvent;
 
 /**
  * Captura eventos
  * 
  * @author Diorgenes Morais
- * @since 1.0.2
+ * @since 1.0.1
  *
  */
 public class ResourceCreatedEventImpl extends ResourceCreatedEvent<Integer> {

@@ -80,9 +80,9 @@
 		
 		<!-- lib useful -->
 		<dependency>
-			<groupId>com.dms</groupId>
-			<artifactId>useful-lib</artifactId>
-			<version>1.1.9</version>
+			<groupId>com.dms.useful</groupId>
+			<artifactId>dms-core</artifactId>
+			<version>1.0.1-RELEASE</version>
 		</dependency>
 	</dependencies>
 
