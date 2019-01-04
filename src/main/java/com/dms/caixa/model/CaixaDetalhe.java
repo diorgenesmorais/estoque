@@ -18,10 +18,10 @@ public class CaixaDetalhe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
-	@Column(name = "caixa_id")
+	@Column(name = "caixa_id", nullable = false)
 	private Integer caixa;
 	@NotNull
-	@Column(name = "conta_id")
+	@Column(name = "conta_id", nullable = false)
 	private Integer conta;
 	@NotNull
 	private BigDecimal pago = BigDecimal.ZERO;
