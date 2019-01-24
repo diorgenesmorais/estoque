@@ -3,6 +3,7 @@ package com.dms.caixa.resource;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import com.dms.caixa.model.Bandeira;
 import com.dms.caixa.repository.BandeirasRepository;
 
 @RestController
-@RequestMapping("/bandeiras")
+@RequestMapping(path = "/bandeiras", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 public class BandeiraResource {
 
 	@Autowired
