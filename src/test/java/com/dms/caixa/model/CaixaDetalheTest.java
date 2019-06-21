@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +26,12 @@ public class CaixaDetalheTest extends AbstractTest {
 		BigDecimal actual = lista.stream().map(CaixaDetalhe::getPago).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
 
 		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void deveLancaConstraintViolationException() throws Exception {
+		//exception.expect(ConstraintViolationException.class);
+		
+		
 	}
 }
