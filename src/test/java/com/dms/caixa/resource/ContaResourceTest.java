@@ -4,7 +4,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import com.dms.caixa.BaseTest;
@@ -14,6 +13,7 @@ public class ContaResourceTest extends BaseTest {
 	@Test
 	public void deveObterTaxaMasterRede() throws Exception {
 		given()
+			.log().uri()
 		.when()
 			.get("/contas/2")
 		.then()
@@ -31,6 +31,7 @@ public class ContaResourceTest extends BaseTest {
 	@Test
 	public void deveVerificarContaComDetalhesNaLista() throws Exception {
 		given()
+			.log().uri()
 		.when()
 			.get("/contas")
 		.then()
@@ -40,16 +41,5 @@ public class ContaResourceTest extends BaseTest {
 			.body("bandeira.nome", hasItem("Master"))
 			;
 	}
-	
-	@Test
-	public void deveVerificarContasEmXML() throws Exception {
-		given()
-		.when()
-			.get("/contas/XML")
-		.then()
-			.assertThat()
-			.statusCode(200)
-			.body("findAll{it.id == 2}.id", hasItem(2))
-			;
-	}
+
 }

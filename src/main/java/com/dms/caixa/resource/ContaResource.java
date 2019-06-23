@@ -44,7 +44,7 @@ public class ContaResource {
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(cacheControl).body(conta.get());
 	}
 
-	@RequestMapping(path = "/contas/XML", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(path = "/XML/contas", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<Conta>> listarXML() {
 		List<Conta> contas = repository.getAll();
 
