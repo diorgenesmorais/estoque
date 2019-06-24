@@ -2,7 +2,7 @@ package com.dms.caixa.resource;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 
 import org.junit.Test;
 
@@ -13,12 +13,10 @@ public class ContaResourceTest extends BaseTest {
 	@Test
 	public void deveObterTaxaMasterRede() throws Exception {
 		given()
-			.log().uri()
 		.when()
 			.get("/contas/2")
 		.then()
 			.assertThat()
-			.statusCode(200)
 			.body("operadora.nome", is("REDE"))
 			.body("forma.tipo", is("ROT"))
 			.body("forma.cartao.tipo", is("CRÉDITO"))
@@ -27,16 +25,14 @@ public class ContaResourceTest extends BaseTest {
 			.body("taxa", is(0.0368f))
 			;
 	}
-	
+
 	@Test
 	public void deveVerificarContaComDetalhesNaLista() throws Exception {
 		given()
-			.log().uri()
 		.when()
 			.get("/contas")
 		.then()
 			.assertThat()
-			.statusCode(200)
 			.body("find{it.id == 2}.id", is(2))
 			.body("bandeira.nome", hasItem("Master"))
 			;
