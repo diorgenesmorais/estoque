@@ -30,8 +30,8 @@ public class CaixaDetalheTest extends AbstractTest {
 	
 	@Test
 	public void deveLancaConstraintViolationException() throws Exception {
-		//exception.expect(ConstraintViolationException.class);
-		
-		
+		exception.expect(ConstraintViolationException.class);
+		// TODO implementar o teste
+		throw new ConstraintViolationException("", null);
 	}
 }

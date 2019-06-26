@@ -11,23 +11,20 @@ import io.restassured.http.ContentType;
 
 public class BandeiraResourceTest extends BaseTest {
 
-	private String recurso = "bandeiras";
-	private Integer id = 6;
-
 	@Test
 	public void deveObterUmaBandeiraEmJson() throws Exception {
 		given()
 			.accept(ContentType.JSON) // não é necessário informar
-			.pathParam("recurso", recurso)
-			.pathParam("id", id)
+			.pathParam("resource", "bandeiras")
+			.pathParam("id", 6)
 		.when()
-			.get("/{recurso}/{id}")
-		.then()
-			.log().all()
-			.assertThat()
-			.statusCode(200)
+			.get("/{resource}/{id}")
+		.then().assertThat().statusCode(200)
+			.and()
 			.body("id", is(6))
+			.and()
 			.body("nome", is("Maestro"))
+			.and()
 			.body("descricao", is("Redeshop débito"))
 			;
 	}
@@ -36,17 +33,17 @@ public class BandeiraResourceTest extends BaseTest {
 	public void deveObterBandeiraEmXML() throws Exception {
 		given()
 			.accept(ContentType.XML)
-			.pathParam("recurso", recurso)
-			.pathParam("id", id)
 		.when()
-			.get("/{recurso}/{id}")
-		.then()
-			.log().all()
-			.assertThat()
-			.statusCode(200)
+			.get("/{resource}/{id}", "bandeiras", 6)
+		.then().assertThat().statusCode(200)
+			.and()
 			.rootPath("Bandeira")
+			.and()
 			.body("id", is("6"))
+			.and()
 			.body("nome", is("Maestro"))
+			.and()
+			.log().all()
 			;
 	}
 }
